@@ -44,12 +44,17 @@
 		<%@include file="./shared/navbar.jsp"%>
 
 		<!-- Page Content -->
-		
+
 		<div>
-		
+
 			<!-- Load "Strona główna" content -->
 			<c:if test="${userClickHome == true }">
 				<%@include file="home.jsp"%>
+			</c:if>
+
+			<!-- Load "Produkty" bookmark -->
+			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+				<%@include file="listProducts.jsp"%>
 			</c:if>
 
 			<!-- Load "O nas" bookmark -->
@@ -61,7 +66,7 @@
 			<c:if test="${userClickContact == true }">
 				<%@include file="contact.jsp"%>
 			</c:if>
-			
+
 		</div>
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
