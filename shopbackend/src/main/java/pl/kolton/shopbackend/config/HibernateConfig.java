@@ -14,7 +14,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = { "pl.kolton.shopbackend.dto" })
+@ComponentScan(basePackages = "pl.kolton.shopbackend.dto")
 @EnableTransactionManagement
 public class HibernateConfig {
 
@@ -26,8 +26,8 @@ public class HibernateConfig {
 	private final static String DATABASE_PASSWORD = "";
 	
 	//DataSource bean
-	@Bean
-	private DataSource getDataSource() {
+	@Bean("dataSource")
+	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		
 		//Connection information
@@ -56,8 +56,8 @@ public class HibernateConfig {
 		
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", DATABASE_DIALECT);
-		properties.put("hibernate.show_sql", true);
-		properties.put("hibernate.format_sql", true);
+		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.format_sql", "true");
 		
 		return properties;
 	}
