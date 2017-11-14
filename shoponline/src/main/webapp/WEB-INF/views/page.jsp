@@ -7,6 +7,8 @@
 <spring:url var="css" value="/resources/css" />
 <spring:url var="js" value="/resources/js" />
 <spring:url var="images" value="/resources/images" />
+<spring:url var="fonts" value="/resources/fonts" />
+
 
 
 
@@ -24,6 +26,7 @@
 <title>Sklep internetowy - ${title}</title>
 <script>
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -32,8 +35,15 @@
 <!-- Bootstrap Simplex theme CSS -->
 <link href="${css}/bootstrap-simplex-theme.css" rel="stylesheet">
 
+<!-- DataTable Bootstrap -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
+
+<!-- Fonts Awesome -->
+<link href="${fonts}/css/font-awesome.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -74,6 +84,12 @@
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/jquery.min.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
+		
+		<!-- DataTable plugin -->
+		<script src="${js}/jquery.dataTables.js"></script>
+
+		<!-- DataTable Bootstrap script-->
+		<script src="${js}/dataTables.bootstrap4.js"></script>
 
 		<!-- Small JavaScript -->
 		<script src="${js}/myapp.js"></script>

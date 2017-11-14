@@ -21,7 +21,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	
 	private static List<Category> categories = new ArrayList<>();
 
-	
+	//Category list
 	@Override
 	public List<Category> list() {
 		
