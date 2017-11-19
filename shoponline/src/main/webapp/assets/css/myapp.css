@@ -4,14 +4,15 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
 
-html {
-	
-	height:100%;
+html, body {
+  height: 100%;
 }
-
 body {
-	padding-top: 54px;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
 }
 
 @media ( min-width : 992px) {
@@ -20,13 +21,6 @@ body {
 	}
 }
 
-footer {
-	margin:0;
-	position:fixed;
-	bottom:0;
-	height:30px;
-	width:100%
-}
 
 .dataTableImg {
 	width:50px;

@@ -50,57 +50,33 @@
 <body>
 
 	<div>
-		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
-
-		<!-- Page Content -->
-
 		<div>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+				<div class="container">
+					<a class="navbar-brand" href="${contextRoot}/home">Strona
+						główna</a>
+				</div>
+			</nav>
+		</div>
 
-			<!-- Load "Strona główna" content -->
-			<c:if test="${userClickHome == true }">
-				<%@include file="home.jsp"%>
-			</c:if>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="jumbotron">
+						<h1>${errorTitle}</h1>
+						<hr />
 
-			<!-- Load "Produkty" bookmark -->
-			<c:if
-				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
-				<%@include file="listProducts.jsp"%>
-			</c:if>
+						<blockquote>${errorDescription}</blockquote>
 
-			<!-- Load "Produkt" bookmark -->
-			<c:if test="${userClickShowProduct == true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
+					</div>
+				</div>
+			</div>
 
-			<!-- Load "O nas" bookmark -->
-			<c:if test="${userClickAbout == true }">
-				<%@include file="about.jsp"%>
-			</c:if>
-
-			<!-- Load "Kontakt" bookmark -->
-			<c:if test="${userClickContact == true }">
-				<%@include file="contact.jsp"%>
-			</c:if>
-
-
-			<!-- Footer -->
 			<%@include file="./shared/footer.jsp"%>
-
-			<!-- Bootstrap core JavaScript -->
-			<script src="${js}/jquery.min.js"></script>
-			<script src="${js}/bootstrap.bundle.min.js"></script>
-
-			<!-- DataTable plugin -->
-			<script src="${js}/jquery.dataTables.js"></script>
-
-			<!-- DataTable Bootstrap script-->
-			<script src="${js}/dataTables.bootstrap4.js"></script>
-
-			<!-- Small JavaScript -->
-			<script src="${js}/myapp.js"></script>
 		</div>
 	</div>
+
+
 </body>
 
 </html>

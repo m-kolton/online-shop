@@ -8,8 +8,7 @@
    http://www.springframework.org/schema/mvc
    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="pl.kolton.shoponline.controller"></context:component-scan>
-	<context:component-scan base-package="pl.kolton.shopbackend.daoimpl"></context:component-scan>
+	<context:component-scan base-package="pl.kolton.shoponline"></context:component-scan>
 	<context:component-scan base-package="pl.kolton.shopbackend"></context:component-scan>
 	
 	<bean id="viewResolver"
