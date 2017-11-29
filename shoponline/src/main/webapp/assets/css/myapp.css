@@ -27,3 +27,52 @@ body {
 	height:50px;
 	
 }
+
+.adminDataTableImg {
+	width:50px;
+	height:50px;
+}
+
+/*Toggle switch*/
+.switch {
+	width:60px;
+	height:34px;
+	position:relative;
+	display:inline-block;
+}
+
+.switch input {
+	display:none;
+}
+
+.slider {
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	cursor:pointer;
+	background-color:#ccc;
+	border-radius:30px;
+	transition:.5s;
+}
+
+.slider:before {
+	position:absolute;
+	background-color:#fff;
+	height:26px;
+	width:26px;
+	content:"";
+	left:4px;
+	bottom:4px;
+	border-radius:50%;
+	transition:.5s;
+}
+
+input:checked + .slider {
+	background-color:#1863E6;
+}
+
+input:checked + .slider:before {
+	transform:transLatex(20px);
+}

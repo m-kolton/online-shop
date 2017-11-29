@@ -19,6 +19,8 @@
 					href="${contextRoot}/about">O nas</a></li>
 				<li class="nav-item" id="contact"><a class="nav-link"
 					href="${contextRoot}/contact">Kontakt</a></li>
+				<li class="nav-item" id="manageProducts"><a class="nav-link"
+					href="${contextRoot}/manage/products">Zarządzaj</a></li>
 			</ul>
 		</div>
 	</div>

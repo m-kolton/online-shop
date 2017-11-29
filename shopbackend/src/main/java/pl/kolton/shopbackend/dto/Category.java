@@ -53,7 +53,7 @@ public class Category {
 	 * Private fields
 	 */
 
-	@Override
+	/*@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Category [id=");
@@ -79,7 +79,7 @@ public class Category {
 		builder.append("]");
 		return builder.toString();
 	}
-
+*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
