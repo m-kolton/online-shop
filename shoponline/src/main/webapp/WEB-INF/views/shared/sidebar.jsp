@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <h1 class="my-4">Shop name</h1>
-
-
 
 <div class="list-group">
 

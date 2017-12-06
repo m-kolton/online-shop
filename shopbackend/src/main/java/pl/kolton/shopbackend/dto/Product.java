@@ -18,54 +18,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Product {
 
+	//toString() method
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Product [id=");
-		builder.append(id);
-		builder.append(", ");
-		if (code != null) {
-			builder.append("code=");
-			builder.append(code);
-			builder.append(", ");
-		}
-		if (name != null) {
-			builder.append("name=");
-			builder.append(name);
-			builder.append(", ");
-		}
-		if (brand != null) {
-			builder.append("brand=");
-			builder.append(brand);
-			builder.append(", ");
-		}
-		if (description != null) {
-			builder.append("description=");
-			builder.append(description);
-			builder.append(", ");
-		}
-		builder.append("unitPrice=");
-		builder.append(unitPrice);
-		builder.append(", quantity=");
-		builder.append(quantity);
-		builder.append(", isActive=");
-		builder.append(isActive);
-		builder.append(", categoryId=");
-		builder.append(categoryId);
-		builder.append(", supplierId=");
-		builder.append(supplierId);
-		builder.append(", purchases=");
-		builder.append(purchases);
-		builder.append(", views=");
-		builder.append(views);
-		builder.append("]");
-		return builder.toString();
+		return "Product [id=" + id + ", " + (code != null ? "code=" + code + ", " : "")
+				+ (name != null ? "name=" + name + ", " : "") + (brand != null ? "brand=" + brand + ", " : "")
+				+ (description != null ? "description=" + description + ", " : "") + "unitPrice=" + unitPrice
+				+ ", quantity=" + quantity + ", isActive=" + isActive + ", categoryId=" + categoryId + ", supplierId="
+				+ supplierId + ", purchases=" + purchases + ", views=" + views + ", "
+				+ (file != null ? "file=" + file : "") + "]";
 	}
 
 	// Uniqe, random code for each product
 	public Product() {
 		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
 	}
+
 
 	public int getId() {
 		return id;

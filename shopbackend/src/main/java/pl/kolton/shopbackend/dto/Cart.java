@@ -1,5 +1,7 @@
 package pl.kolton.shopbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Cart {
+public class Cart implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Private fields

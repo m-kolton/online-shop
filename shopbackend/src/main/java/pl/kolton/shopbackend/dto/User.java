@@ -1,5 +1,7 @@
 package pl.kolton.shopbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,27 +10,48 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+
 
 @Entity
 @Table(name="user_detail")
-public class User {
+public class User implements Serializable{
 	
-	/*
+	private static final long serialVersionUID = 1L;
+	
+	/* 
 	 * Private fields for user
 	 * */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name="first_name")
+	@NotBlank(message="Proszę podać imię")
 	private String firstName;
+	
 	@Column(name = "last_name")
+	@NotBlank(message="Proszę podać nazwisko")
 	private String lastName;
+	
+	@NotBlank(message="Proszę podać adres email")
 	private String email;
+	
+	@NotBlank(message="Proszę podać numer telefonu")
 	@Column(name="contact_number")
 	private String contactNumber;
+	
 	private String role;
+	
+	@NotBlank(message="Proszę podać hasło")
 	private String password;
+	
+	@Transient
+	@NotBlank(message="Proszę powtórzyć hasło")
+	private String confirmPassword;
+
 	private boolean enabled = true;
 	
 	//Each user has cart
@@ -86,6 +109,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 	public boolean isEnabled() {
 		return enabled;

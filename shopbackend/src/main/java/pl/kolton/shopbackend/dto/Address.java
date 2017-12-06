@@ -1,14 +1,20 @@
 package pl.kolton.shopbackend.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Address {
+public class Address implements Serializable {
+
+
+	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Private fields
@@ -28,17 +34,31 @@ public class Address {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
+	@NotBlank(message="Proszę podać adres")
 	@Column(name = "address_line_one")
 	private String addressLineOne;
+	
+	@NotBlank(message="Proszę podać adres cd.")
 	@Column(name = "address_line_two")
 	private String addressLineTwo;
+	
+	@NotBlank(message="Proszę podać miejscowość")
 	private String city;
+	
+	@NotBlank(message="Proszę podać województwo")
 	private String state;
+	
+	@NotBlank(message="Proszę podać kraj")
 	private String country;
+	
+	@NotBlank(message="Proszę podać kod pocztowy")
 	@Column(name = "postal_code")
+	
 	private String postalCode;
+	
 	private boolean billing;
+	
 	private boolean shipping;
 
 	/*
