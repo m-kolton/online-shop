@@ -48,6 +48,7 @@
 					</c:otherwise>
 				</c:choose>
 				
+				<security:authorize access="hasAuthority('USER')">
 				<c:choose>
 					<c:when test="${product.quantity < 1}">
 						<a href="javascript:void(0)" class="btn btn-success disabled" aria-disabled="true">Dodaj do koszyka <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>		
@@ -56,8 +57,11 @@
 						<a href="${contextRoot}/cart/add/${product.id}/product" class="btn btn-success">Dodaj do koszyka <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 					</c:otherwise>
 				</c:choose>
+				</security:authorize>
 				
-				
+				<security:authorize access="hasAuthority('ADMIN')">
+					<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning">Edytuj<i class="fa fa-pencil" aria-hidden="true"></i></a>
+				</security:authorize>
 				
 				<a href="${contextRoot}/cart/show/products" class="btn btn-success">Powrót</a>
 			

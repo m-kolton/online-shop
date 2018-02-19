@@ -24,7 +24,4 @@ public interface UserDAO {
 	
 	Address getBillingAddress(User user);
 	List<Address> listShippingAddresses(User user);
-
-	// Method for updating to cart
-	boolean updateCart(Cart cart);
 }

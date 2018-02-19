@@ -13,11 +13,15 @@ $(function() {
 		case 'Zarządzaj':
 			$('#manageProducts').addClass('active');
 			break;
+		case 'Koszyk':
+			$('#userCart').addClass('active');
+			break;
 		default:
-			if (menu == "Home")
+			if (menu == 'Home')
 				break;
-			$('#listProducts').addClass('active');
+			//$('#listProducts').addClass('active');
 			$('#a_' + menu).addClass('active');
+			break;
 		}
 
 	//Tackle CSRF
@@ -27,20 +31,16 @@ $(function() {
 	if(token.length > 0 && header.length > 0) {
 		//Set token header for Ajax request
 		$(document).ajaxSend(function(e, xhr, options) {
+		xhr.setRequestHeader(header, token);
 		
-		xhr.setRequestHeader(header, token);	
-		
-		});
-		
+		});	
 	}
 	
 	// JQuery DataTable
-
 	var $table = $('#productListTable');
 
 	// Execute only if table exist
 	if ($table.length) {
-		// console.log('Wewnątrz tabeli!');
 
 		var jsonUrl = '';
 		if (window.categoryId == '') {
@@ -54,8 +54,8 @@ $(function() {
 		$table.DataTable({
 			lengthMenu : [
 					[ 3, 5, 10, -1 ],
-					[ '3 przedmioty', '5 przedmiotów', '10 przedmiotów',
-							'Wszystkie przedmioty' ] ],
+					[ '3', '5', '10',
+							'Wszystkie' ] ],
 			pageLength : 5,
 			ajax: {
 				url: jsonUrl,
@@ -64,24 +64,29 @@ $(function() {
 			columns: [
 				{
 					data: 'code',
+					className: 'text-center',
 					mRender: function(data, type, row) {
 						return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="dataTableImg"/>';
 					}
 				},
 				{
-					data: 'name',	
+					data: 'name',
+					className: 'text-center',
 				},
 				{
-					data: 'brand',	
+					data: 'brand',
+					className: 'text-center',
 				},
 				{
 					data: 'unitPrice',
+					className: 'text-center',
 					mRender: function(data, type, row) {
 						return data + ' zł' 
 					}
 				},
 				{
 					data: 'quantity',
+					className: 'text-center',
 					mRender: function(data, type, row) {
 						if(data < 1) {
 							return '<span style="color:red">Brak w magazynie!</span>';
@@ -91,23 +96,27 @@ $(function() {
 				},
 				{
 					data : 'id',
+					className: 'text-center',
 					bSortable: false,
 					mRender: function(data, type, row) {
 						var str = '';
-						str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>&#160;';
+						str += '<a href="'+window.contextRoot+ '/show/'+data+'/product" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>&#160;&#160;';
 						
-						if(row.quantity < 1) {
-							str += '<a href="javascript:void(0)" class="btn btn-success disabled" aria-disabled="true"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>';
-						} else {
-							str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>';
+						if(userRole == 'ADMIN') {
+							str += '<a href="'+window.contextRoot+ '/manage/add/'+data+'/product" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>&#160;&#160;';
+						}else {
+						
+							if(row.quantity < 1) {
+								str += '<a href="javascript:void(0)" class="btn btn-success disabled" aria-disabled="true"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>';
+							} else {
+									str += '<a href="'+window.contextRoot+ '/manage/add/'+data+'/product" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>&#160;&#160;';
+									str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product" class="btn btn-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>';	
+							}
 						}
-						
-						
 						return str;
 					}
 				},
-			]
-			
+			]	
 		});
 	}
 	
@@ -122,23 +131,19 @@ $(function() {
 		}, 3000)
 	}
 	
-	
-	
 	//Data table for Admin
-	//-----------------------------------
 	var $adminProductsTable = $('#adminProductsTable');
 
 	// Execute only if table exist
 	if ($adminProductsTable.length) {
-		// console.log('Wewnątrz tabeli!');
 
 		var jsonUrl = window.contextRoot + '/json/data/admin/all/products';
 
 		$adminProductsTable.DataTable({
 			lengthMenu : [
 					[ 10, 20, 50, -1 ],
-					[ '10 przedmiotów', '20 przedmiotów', '50 przedmiotów',
-							'Wszystkie przedmioty' ] ],
+					[ '10', '20', '50',
+							'Wszystkie' ] ],
 			pageLength : 20,
 			ajax: {
 				url: jsonUrl,
@@ -208,7 +213,6 @@ $(function() {
 						return str;
 					}
 				}
-				
 			],
 			
 			initComplete: function() {
@@ -230,8 +234,6 @@ $(function() {
 							
 							if(confirmed) {
 							
-							console.log(value);
-							
 							var activationUrl = window.contextRoot + '/manage/product/' + value + '/activation';
 							
 							$.post(activationUrl, function(data) {
@@ -249,10 +251,8 @@ $(function() {
 					});
 				});
 			}
-			
 		});
 	}
-	//---------------------------------------
 	
 	//Validation for category
 	var $categoryForm = $('#categoryForm');
@@ -286,8 +286,6 @@ $(function() {
 		});
 	}
 	
-	//-------------------------------------------
-	
 	//Validation for login
 	var $loginForm = $('#loginForm');
 	
@@ -319,4 +317,31 @@ $(function() {
 			}
 		});
 	}
+	
+	//Handling click-event of refresh button
+	$('button[name="refreshCart"]').click(function() {
+		
+		//Fetch cart line id
+		var cartLineId = $(this).attr('value');
+		var countElement = $('#count_' + cartLineId);
+		
+		var originalCount = countElement.attr('value');
+		var currentCount = countElement.val();
+		
+		//Work when the count change
+		if(currentCount !== originalCount) {
+
+			if(currentCount < 1 || currentCount > 3) {
+				countElement.val(originalCount);
+				bootbox.alert({
+					size:'medium',
+					title:'Błąd!',
+					message:'Wartość musi być minimalnie 1 i maksymalnie 3!'
+				});
+			}else {
+				var updateUrl = window.contextRoot + '/cart/' + cartLineId + '/update?count=' + currentCount;
+				window.location.href = updateUrl;
+			}
+		}
+	});
 });

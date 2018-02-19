@@ -138,7 +138,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="row">
@@ -148,39 +147,43 @@
 		</div>
 		
 		<div class="col-xs-12">
-			<div style="overflow:auto">
+			<div class="container-fluid">
+				<div class="table-responsive">
 			
-				<!-- Product table for Admin -->
-				<table id="adminProductsTable" class="table table-stripped-bordered">
-				
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Zdjęcie</th>
-							<th>Nazwa</th>
-							<th>Marka</th>
-							<th>Ilość</th>
-							<th>Cena jednostkowa</th>
-							<th>Aktywność</th>
-							<th>Edycja</th>
-						</tr>
-					</thead>
+					<!-- Product table for Admin -->
+					<table id="adminProductsTable" class="table table-stripped-bordered">
 					
-					<tfoot>
-						<tr>
-							<th>ID</th>
-							<th>Zdjęcie</th>
-							<th>Nazwa</th>
-							<th>Marka</th>
-							<th>Ilość</th>
-							<th>Cena jednostkowa</th>
-							<th>Aktywność</th>
-							<th>Edycja</th>
-						</tr>
-					</tfoot>
-				
-				</table>
-				
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Zdjęcie</th>
+								<th>Nazwa</th>
+								<th>Marka</th>
+								<th>Ilość</th>
+								<th>Cena jednostkowa</th>
+								<th>Aktywność</th>
+								<th>Edycja</th>
+							</tr>
+						</thead>
+						
+						<tfoot>
+							<tr>
+								<th>ID</th>
+								<th>Zdjęcie</th>
+								<th>Nazwa</th>
+								<th>Marka</th>
+								<th>Ilość</th>
+								<th>Cena jednostkowa</th>
+								<th>Aktywność</th>
+								<th>Edycja</th>
+							</tr>
+						</tfoot>
+					
+					</table>
+					<div class="row">
+						<p></p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

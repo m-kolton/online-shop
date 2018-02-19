@@ -38,7 +38,7 @@
 <link href="${css}/bootstrap-simplex-theme.css" rel="stylesheet">
 
 <!-- DataTable Bootstrap -->
-<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -88,6 +88,11 @@
 			<!-- Load "Zarządzaj" bookmark -->
 			<c:if test="${userClickManageProducts == true }">
 				<%@include file="manageProducts.jsp"%>
+			</c:if>
+			
+			<!-- Load "Koszyk" bookmark -->
+			<c:if test="${userClickShowCart == true }">
+				<%@include file="cart.jsp"%>
 			</c:if>
 
 			<!-- Footer -->

@@ -103,51 +103,43 @@
 							</div>
 
 							<div class="card-body">
-								<form action="${contextRoot}/login" method="POST"
-									class="form-horizontal" id="loginForm">
+								<form action="${contextRoot}/login" method="POST" class="form-horizontal" id="loginForm">
+									
 									<div class="form-group">
-										<label for="username" class="col-md-4 control-label">Email:
-										</label>
-										<div class="col-md-8">
-											<input type="text" name="username" id="username"
-												class="form-control" />
+										<label for="username" class="col-md-4 control-label">Email:</label>
+										<div class="col-md-12">
+											<input type="text" name="username" id="username" class="form-control" />
 										</div>
 									</div>
+						
 									<div class="form-group">
-										<label for="password" class="col-md-4 control-label">Hasło:
-										</label>
-										<div class="col-md-8">
-											<input type="password" name="password" id="password"
-												class="form-control" />
+										<label for="password" class="col-md-4 control-label">Hasło:</label>
+										<div class="col-md-12">
+											<input type="password" name="password" id="password" class="form-control" />
 										</div>
 									</div>
+							
 									<div class="form-group">
 										<div class="col-md-offset-4 col-md-8">
 											<input type="submit" value="Login" class="btn btn-primary" />
-											<input type="hidden" name="${_csrf.parameterName}"
-												value="${_csrf.token}" />
+											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 										</div>
 									</div>
 								</form>
-
 							</div>
 							
-							<div class="col-md-4 offset-md-4">
-							<div class="panel-footer">
+							<div class="card-footer">
 								<div class="text-right">
 									Nowy? - <a href="${contextRoot}/register">Zarejestruj się!</a>
 								</div>
 							</div>
-							</div>
 						</div>
-
 					</div>
-
 				</div>
-
+					<div class="col-xs-12" style="height:50px;"></div>
 			</div>
-
 		</div>
+	</div>
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
